@@ -1,10 +1,9 @@
 'use client'
 
-import { signOut } from 'next-auth/react'
 import React from 'react'
 import EmptyState from '../components/EmptyState'
 
-const Users = () => {
+const Home = () => {
   return (
     <div className="hidden lg:block lg:pl-80 h-full">
       <EmptyState />
@@ -12,4 +11,4 @@ const Users = () => {
   )
 }
 
-export default Users
+export default Home
