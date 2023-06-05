@@ -66,16 +66,16 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
       onClick={handleClick}
       className={clsx(
         `
-        w-full
         relative
         flex
+        w-full
+        cursor-pointer
         items-center
         space-x-3
-        hover:bg-neutral-100
         rounded-lg
-        transition
-        cursor-pointer
         p-3
+        transition
+        hover:bg-neutral-100
       `,
         selected ? 'bg-neutral-100' : 'bg-white'
       )}
@@ -85,10 +85,10 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
         <div className="focus:outline-none">
           <div
             className="
-              flex
-              justify-between
-              items-center
               mb-1
+              flex
+              items-center
+              justify-between
             "
           >
             <p
@@ -104,8 +104,8 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
               <p
                 className="
                   text-xs
-                  text-gray-400
                   font-light
+                  text-gray-400
                 "
               >
                 {format(new Date(lastMessage.createdAt), 'p')}
@@ -119,7 +119,7 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
               truncate
               text-sm
             `,
-              hasSeen ? 'text-gray-500' : 'text-black font-medium'
+              hasSeen ? 'text-gray-500' : 'font-medium text-black'
             )}
           >
             {lastMessageText}
