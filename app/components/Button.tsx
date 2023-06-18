@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import React from 'react'
 
 interface ButtonProps {
-  type?: 'submit' | 'reset' | undefined
+  type?: 'submit' | 'reset' | 'button'
   fullWidth?: boolean
   children?: React.ReactNode
   onClick?: () => void
@@ -40,7 +40,7 @@ const Button: React.FC<ButtonProps> = ({
         focus-visible:outline-2
         focus-visible:outline-offset-2
       `,
-        disabled && 'opacity-50 cursor-default',
+        disabled && 'cursor-default opacity-50',
         fullWidth && 'w-full',
         secondary ? 'text-gray-900' : 'text-white',
         danger &&
