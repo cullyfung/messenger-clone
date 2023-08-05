@@ -1,14 +1,12 @@
-'use client'
-
 import React from 'react'
 import EmptyState from '../components/EmptyState'
 
-const Home = () => {
+const User = () => {
   return (
-    <div className="hidden lg:block lg:pl-80 h-full">
+    <div className="hidden h-full lg:block lg:pl-80">
       <EmptyState />
     </div>
   )
 }
 
-export default Home
+export default User
