@@ -1,3 +1,5 @@
+'use client'
+
 import useConversation from '@/app/hooks/useConversation'
 import useRoutes from '@/app/hooks/useRoutes'
 import React from 'react'
@@ -15,14 +17,14 @@ const MobileFooter = () => {
     <div
       className="
         fixed
-        justify-between
-        w-full
         bottom-0
         z-40
         flex
+        w-full
         items-center
-        bg-white
+        justify-between
         border-t-[1px]
+        bg-white
         lg:hidden
       "
     >
