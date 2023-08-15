@@ -1,14 +1,17 @@
 ## Introduction
-this is a simple messenger application
+An easy-to-use chat application
 ## Stack
 
 - Nextjs
+- NextAuth
+- Zustand
 - Prisma
 - Tailwind CSS
 - react-hook-form
 - axios
 - typescript
 - mongodb
+- pusher
 
 ## Getting Started
 ### Install packages
