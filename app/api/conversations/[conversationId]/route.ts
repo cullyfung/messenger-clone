@@ -1,6 +1,7 @@
 import getCurrentUser from '@/app/actions/getCurrentUser'
 import useConversation from '@/app/hooks/useConversation'
 import prisma from '@/app/libs/prismadb'
+import { pusherServer } from '@/app/libs/pusher'
 import { NextResponse } from 'next/server'
 
 interface IParams {
@@ -19,7 +20,7 @@ export async function DELETE(
       return new NextResponse('Unauthorized', { status: 401 })
     }
 
-    const exitingConversation = await prisma.conversation.findUnique({
+    const existingConversation = await prisma.conversation.findUnique({
       where: {
         id: conversationId
       },
@@ -28,7 +29,7 @@ export async function DELETE(
       }
     })
 
-    if (!exitingConversation) {
+    if (!existingConversation) {
       return new NextResponse('Invalid ID', { status: 400 })
     }
 
@@ -38,6 +39,16 @@ export async function DELETE(
         userIds: {
           hasSome: [currentUser.id]
         }
+      }
+    })
+
+    existingConversation.users.forEach((user) => {
+      if (user.email) {
+        pusherServer.trigger(
+          user.email,
+          'conversation:remove',
+          existingConversation
+        )
       }
     })
 
