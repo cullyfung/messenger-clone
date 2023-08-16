@@ -39,7 +39,6 @@ const MessageInput: React.FC<MessageInputProps> = ({
           focus:outline-none  
         "
       />
-      MessageInput
     </div>
   )
 }

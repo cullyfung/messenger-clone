@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
-
 import getCurrentUser from '@/app/actions/getCurrentUser'
+
 import prisma from '@/app/libs/prismadb'
 import { pusherServer } from '@/app/libs/pusher'
 
@@ -11,7 +11,7 @@ export async function POST(request: Request) {
     const { userId, isGroup, members, name } = body
 
     if (!currentUser?.id || !currentUser?.email) {
-      return new NextResponse('Unauthenticated', { status: 401 })
+      return new NextResponse('Unauthorized', { status: 400 })
     }
 
     if (isGroup && (!members || members.length < 2 || !name)) {
@@ -39,11 +39,13 @@ export async function POST(request: Request) {
         }
       })
 
+      // Update all connections with new conversation
       newConversation.users.forEach((user) => {
         if (user.email) {
           pusherServer.trigger(user.email, 'conversation:new', newConversation)
         }
       })
+
       return NextResponse.json(newConversation)
     }
 
@@ -88,6 +90,7 @@ export async function POST(request: Request) {
       }
     })
 
+    // Update all connections with new conversation
     newConversation.users.map((user) => {
       if (user.email) {
         pusherServer.trigger(user.email, 'conversation:new', newConversation)

@@ -1,8 +1,8 @@
+import { NextResponse } from 'next/server'
+
 import getCurrentUser from '@/app/actions/getCurrentUser'
-import useConversation from '@/app/hooks/useConversation'
 import prisma from '@/app/libs/prismadb'
 import { pusherServer } from '@/app/libs/pusher'
-import { NextResponse } from 'next/server'
 
 interface IParams {
   conversationId?: string

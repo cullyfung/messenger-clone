@@ -4,11 +4,7 @@ import { FullConversationType } from '../types'
 import { User } from '@prisma/client'
 
 const useOtherUser = (
-  conversation:
-    | FullConversationType
-    | {
-        users: User[]
-      }
+  conversation: FullConversationType | { users: User[] }
 ) => {
   const session = useSession()
 
@@ -19,7 +15,7 @@ const useOtherUser = (
       (user) => user.email !== currentUserEmail
     )
 
-    return otherUser[0]
+    return otherUser?.[0]
   }, [session.data?.user?.email, conversation.users])
 
   return otherUser
