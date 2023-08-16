@@ -62,11 +62,7 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        action="
-        "
-      >
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="space-y-12">
           <div className="border-b border-x-gray-900/10 pb-12">
             <h2
@@ -130,7 +126,7 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
                   <CldUploadButton
                     options={{ maxFiles: 1 }}
                     onUpload={handleUpload}
-                    uploadPreset="jiax3nbj"
+                    uploadPreset="messenger-preset"
                   >
                     <Button disabled={isLoading} secondary type="button">
                       Change
